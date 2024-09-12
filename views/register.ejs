@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profit and Loss Sign-Up</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .subscription-level {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .subscription-level label {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            .subscription-level {
+                flex-direction: column;
+            }
+
+            .subscription-level select {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Company Sign-Up</h2>
+        <form action="http://localhost:3600/api/authRoute/register" method="POST">
+            <div class="form-group">
+                <label for="businessName">Business Name</label>
+                <input type="text" id="businessName" name="businessName" placeholder="Enter your business name" required>
+            </div>
+            <div class="form-group">
+                <label for="ownerName">Name of the Owner</label>
+                <input type="text" id="ownerName" name="ownerName" placeholder="Enter the owner's name" required>
+            </div>
+            <div class="form-group">
+                <label for="businessRegNo">Business Registration Number</label>
+                <input type="text" id="businessRegNo" name="businessRegNo" placeholder="Enter business registration number" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+            <div class="subscription-level">
+                <label for="subscriptionLevel">Subscription Level</label>
+                <select id="subscriptionLevel" name="subscriptionLevel" required>
+                    <option value="">Select a subscription level</option>
+                    <option value="2500">2,500 Naira</option>
+                    <option value="5000">5,000 Naira</option>
+                    <option value="25000">25,000 Naira</option>
+                </select>
+            </div>
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+
+
+
+</body>
+</html>

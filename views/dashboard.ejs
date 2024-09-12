@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav {
+            background-color: #28a745;
+            padding: 15px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            padding: 15px;
+            height: 100vh;
+            color: white;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-bottom: 1px solid #444;
+        }
+        .sidebar a:hover {
+            background-color: #28a745;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .summary {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .summary div {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            text-align: center;
+        }
+        .summary div h3 {
+            margin-bottom: 10px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Company Profit and Loss Dashboard</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#form">Profit & Loss Form</a></li>
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#logout">Logout</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#form">Input Data</a>
+        <a href="#summary">Profit/Loss Summary</a>
+        <a href="#reports">Generate Reports</a>
+        <a href="#settings">Settings</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section id="dashboard">
+            <h2>Welcome to Your Dashboard</h2>
+            <p>Track your company's financial data and monitor profits and losses.</p>
+            <h1>Welcome, <%= user.ownerName %>!</h1>
+            <p>Business Name: <%= user.businessName %></p>
+            <p>Business Registration Number: <%= user.businessRegNo %></p>
+            <p>Email: <%= user.email %></p>
+            <p>Subscription Level: <%= user.subscriptionLevel %></p>
+            
+            <div class="summary">
+                <div>
+                    <h3>Total Revenue</h3>
+                    <p>₦1,000,000</p>
+                </div>
+                <div>
+                    <h3>Total Expenses</h3>
+                    <p>₦700,000</p>
+                </div>
+                <div>
+                    <h3>Net Profit</h3>
+                    <p>₦300,000</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profit and Loss Form -->
+        <section id="form">
+            <h2>Enter Profit & Loss Data</h2>
+            <form action="/submit-profit-loss" method="post">
+                <label for="company-name">Company Name:</label>
+                <input type="text" id="company-name" name="companyName" placeholder="Enter company name" required>
+
+                <label for="total-revenue">Total Sales/Revenue (₦):</label>
+                <input type="number" id="total-revenue" name="totalRevenue" placeholder="e.g. 1000000" required>
+
+                <label for="other-income">Other Income Sources (₦):</label>
+                <input type="number" id="other-income" name="otherIncome" placeholder="e.g. 200000">
+
+                <label for="total-expenses">Total Expenses (₦):</label>
+                <input type="number" id="total-expenses" name="totalExpenses" placeholder="e.g. 700000">
+
+                <label for="net-profit">Net Profit (₦):</label>
+                <input type="number" id="net-profit" name="netProfit" placeholder="e.g. 300000">
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <!-- Profit/Loss Summary -->
+        <section id="summary">
+            <h2>Profit and Loss Summary</h2>
+            <p>Here is a breakdown of your profit and loss data:</p>
+
+            <div class="summary">
+                <div>
+                    <h3>Total Revenue</h3>
+                    <p>₦1,000,000</p>
+                </div>
+                <div>
+                    <h3>Total Expenses</h3>
+                    <p>₦700,000</p>
+                </div>
+                <div>
+                    <h3>Net Profit</h3>
+                    <p>₦300,000</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+</body>
+</html>
