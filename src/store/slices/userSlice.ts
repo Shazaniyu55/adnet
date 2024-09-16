@@ -16,7 +16,7 @@ export const signUp = createAsyncThunk(
     try {
       const res = await axios({
         method: "POST",
-        url: `${process.env.SMNK_URL}api/users/signup`,
+        url: `http://localhost:3000/api/users/signup`,
         data: values,
       });
       const data = await res.data;
@@ -36,7 +36,7 @@ export const login = createAsyncThunk("users/login", async (values: any) => {
   try {
     const res = await axios({
       method: "POST",
-      url: `${process.env.SMNK_URL}api/users/login`,
+      url: `http://localhost:3000/api/users/login`,
       data: values,
     });
     const data = await res.data;
@@ -57,7 +57,7 @@ export const changePassword = createAsyncThunk(
     try {
       const res = await axios({
         method: "POST",
-        url: `${process.env.SMNK_URL}api/sw-dashboard/change-password`,
+        url: `http://localhost:3000/api/sw-dashboard/change-password`,
         data: values,
       });
       const data = await res.data;
@@ -77,7 +77,7 @@ export const changePasswordWithPhone = createAsyncThunk(
     try {
       const res = await axios({
         method: "POST",
-        url: `${process.env.SMNK_URL}api/users/change-password`,
+        url: `http://localhost:3000/api/users/change-password`,
         data: values,
       });
       const data = await res.data;
