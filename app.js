@@ -4,12 +4,14 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoute');
+const passwordRoute = require('./routes/passwordRoute')
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const validation = require('./validation/userValidation')
-const joi = require('joi');
+// const joi = require('joi');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
 const bcryptjs = require('bcryptjs')
 const port = process.env.PORT||3600;
 
@@ -25,25 +27,14 @@ app.use(cookieParser());
 app.set('view engine', 'ejs');
 app.use(cors());
 app.use('/api/authRoute', authRoutes);
-// app.use('/api/userRoute', userRoute)
+app.use('/api/passwordRoute', passwordRoute)
 app.use (express.static(path.join(__dirname, "assets")));//host  express static files
 app.use(cors({origin: 'http://localhost:3600'}));//allows cross origin resources sharing
 
 
 
-app.get('/', (req, res)=>{
-  res.render( 'index')
-});
-
-app.get('/register', (req, res)=>{
-  res.render( 'register')
-});
-
-app.get('/dashboard', (req,res)=>{
-  res.render('dashboard')
-})
-
 
 app.listen(port, ()=>{
+  
     console.log(`server running on http://localhost:${port}/`)
 })
